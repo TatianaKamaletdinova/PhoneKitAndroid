@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="проверить пересоздание компонента"
+            tools:ignore="HardcodedText" />
+
+        <ru.kamal.country_phone_kit.api.phone_view.PhoneView
+            android:id="@+id/phoneNumberView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:initDefaultCountry="true"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ru.kamal.country_phone_kit.api.phone_view.PhoneView
+            android:id="@+id/phoneNumberView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:initDefaultCountry="true"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Поле для теста фокуса"
+            android:inputType="textPersonName"
+            tools:ignore="HardcodedText"
+            android:importantForAutofill="no" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Первый номер корректный"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+</ScrollView>

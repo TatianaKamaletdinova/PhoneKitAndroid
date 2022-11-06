@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:gravity="center"
+    tools:orientation="horizontal"
+    tools:paddingBottom="8dp"
+    tools:paddingEnd="20dp"
+    tools:paddingStart="20dp"
+    tools:paddingTop="8dp"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/common_phone"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:admiralTextColorNormalEnabled="@color/blue_60" />
+
+        <ru.kamal.country_phone_kit.util.ui.phone_view.view.TextViewSwitcher
+            android:id="@+id/flag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/codeField"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:text="@string/common_just_plus"
+            app:layout_constraintStart_toEndOf="@+id/flag"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <ru.kamal.country_phone_kit.util.ui.phone_view.view.AnimatedHintEditText
+            android:id="@+id/codeField"
+            android:layout_width="47dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:imeOptions="actionNone"
+            android:inputType="phone"
+            android:maxLines="1"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            tools:text="7954" />
+
+        <ru.kamal.country_phone_kit.util.ui.phone_view.view.AnimatedHintEditText
+            android:id="@+id/phoneField"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:imeOptions="actionPrevious"
+            android:inputType="phone"
+            android:maxLines="1"
+            app:layout_constraintBottom_toBottomOf="@+id/codeField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/codeField"
+            app:layout_constraintTop_toTopOf="@+id/codeField"
+            tools:text="4343434" />
+
+        <TextView
+            android:id="@+id/errorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/lineCode"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/lineCode"
+            app:layout_constraintTop_toBottomOf="@+id/lineCode"
+            app:layout_constraintVertical_bias="0.0"
+            tools:textColor="@color/red_70"
+            tools:text="Ошибка кода"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/lineCode"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="2.5dp"
+            app:layout_constraintEnd_toEndOf="@+id/phoneField"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/codeField"
+            tools:background="@color/grey" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</merge>

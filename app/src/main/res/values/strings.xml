@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Телефон</string>
+    <string name="common_error_code_phone">Некорректный код страны</string>
+</resources>

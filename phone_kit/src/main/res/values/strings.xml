@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_just_plus">+</string>
+    <string name="common_phone">Телефон</string>
+    <string name="common_plus">+ %1$s</string>
+</resources>

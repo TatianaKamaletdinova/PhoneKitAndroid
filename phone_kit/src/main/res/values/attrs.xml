@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="initDefaultCountry" format="boolean"/>
+
+    <declare-styleable name="PhoneView">
+        <attr name="initDefaultCountry" />
+    </declare-styleable>
+</resources>
