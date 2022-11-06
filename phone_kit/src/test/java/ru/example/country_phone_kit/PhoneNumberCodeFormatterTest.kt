@@ -2,9 +2,9 @@ package ru.example.country_phone_kit
 
 import org.junit.Assert
 import org.junit.Test
-import ru.kamal.country_phone_kit.api.model.Country
-import ru.kamal.country_phone_kit.util.ui.phone_view.formater.PhoneNumberCodeFormatter
-import ru.kamal.country_phone_kit.util.ui.phone_view.model.EditorCodeInfo
+import ru.kamal.phone_kit.api.model.Country
+import ru.kamal.phone_kit.util.ui.phone_view.formater.PhoneNumberCodeFormatter
+import ru.kamal.phone_kit.util.ui.phone_view.model.EditorCodeInfo
 
 @Suppress("NonAsciiCharacters")
 class PhoneNumberCodeFormatterTest {

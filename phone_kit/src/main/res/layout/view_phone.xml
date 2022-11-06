@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:admiralTextColorNormalEnabled="@color/blue_60" />
 
-        <ru.kamal.country_phone_kit.util.ui.phone_view.view.TextViewSwitcher
+        <ru.kamal.phone_kit.util.ui.phone_view.view.TextViewSwitcher
             android:id="@+id/flag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             app:layout_constraintStart_toEndOf="@+id/flag"
             app:layout_constraintTop_toBottomOf="@+id/title" />
 
-        <ru.kamal.country_phone_kit.util.ui.phone_view.view.AnimatedHintEditText
+        <ru.kamal.phone_kit.util.ui.phone_view.view.AnimatedHintEditText
             android:id="@+id/codeField"
             android:layout_width="47dp"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView"
             tools:text="7954" />
 
-        <ru.kamal.country_phone_kit.util.ui.phone_view.view.AnimatedHintEditText
+        <ru.kamal.phone_kit.util.ui.phone_view.view.AnimatedHintEditText
             android:id="@+id/phoneField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

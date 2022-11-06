@@ -21,14 +21,14 @@
             android:text="проверить пересоздание компонента"
             tools:ignore="HardcodedText" />
 
-        <ru.kamal.country_phone_kit.api.phone_view.PhoneView
+        <ru.kamal.phone_kit.api.phone_view.PhoneView
             android:id="@+id/phoneNumberView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:initDefaultCountry="true"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ru.kamal.country_phone_kit.api.phone_view.PhoneView
+        <ru.kamal.phone_kit.api.phone_view.PhoneView
             android:id="@+id/phoneNumberView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

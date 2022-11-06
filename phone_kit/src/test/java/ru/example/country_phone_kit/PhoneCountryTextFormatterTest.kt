@@ -2,8 +2,8 @@ package ru.example.country_phone_kit
 
 import org.junit.Assert
 import org.junit.Test
-import ru.kamal.country_phone_kit.api.model.Country
-import ru.kamal.country_phone_kit.util.formater.PhoneFormatterImpl
+import ru.kamal.phone_kit.api.model.Country
+import ru.kamal.phone_kit.util.formater.PhoneFormatterImpl
 
 
 @Suppress("NonAsciiCharacters")

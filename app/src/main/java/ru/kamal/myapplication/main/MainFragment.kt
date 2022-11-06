@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
-import ru.kamal.country_phone_kit.api.phone_view.PhoneResult
-import ru.kamal.country_phone_kit.util.withUnit
+import ru.kamal.phone_kit.api.phone_view.PhoneResult
+import ru.kamal.phone_kit.util.withUnit
 import ru.kamal.myapplication.R
 import ru.kamal.myapplication.databinding.FragmentMainBinding
 import ru.kamal.myapplication.second.SecondFragment
