@@ -6,7 +6,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ru.kamal.phone_kit.R
 import ru.kamal.phone_kit.api.model.Country
 import ru.kamal.phone_kit.util.data.CountriesRepository
 import ru.kamal.phone_kit.util.launchSafeIgnoreError
@@ -15,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
+import ru.kamal.country_phone_kit.R
 
 internal class CountryAlert(
     private val context: Context,

@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import ru.kamal.country_phone_kit.databinding.ItemCountryBinding
 import ru.kamal.phone_kit.api.model.Country
-import ru.kamal.phone_kit.databinding.ItemCountryBinding
 
 internal class CountryAdapter(
     private val action: (account: Country) -> Unit,

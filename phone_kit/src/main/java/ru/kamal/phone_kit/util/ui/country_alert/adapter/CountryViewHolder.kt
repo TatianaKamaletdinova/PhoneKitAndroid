@@ -1,9 +1,9 @@
 package ru.kamal.phone_kit.util.ui.country_alert.adapter
 
 import androidx.recyclerview.widget.RecyclerView
-import ru.kamal.phone_kit.R
+import ru.kamal.country_phone_kit.R
+import ru.kamal.country_phone_kit.databinding.ItemCountryBinding
 import ru.kamal.phone_kit.api.model.Country
-import ru.kamal.phone_kit.databinding.ItemCountryBinding
 import ru.kamal.phone_kit.util.getFlag
 import ru.kamal.phone_kit.util.withUnit
 

@@ -17,9 +17,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.parcelize.Parcelize
-import ru.kamal.phone_kit.R
+import ru.kamal.country_phone_kit.R
+import ru.kamal.country_phone_kit.databinding.ViewPhoneBinding
 import ru.kamal.phone_kit.api.model.Country
-import ru.kamal.phone_kit.databinding.ViewPhoneBinding
 import ru.kamal.phone_kit.util.*
 import ru.kamal.phone_kit.util.data.CountriesRepository
 import ru.kamal.phone_kit.util.formater.PhoneFormatterImpl

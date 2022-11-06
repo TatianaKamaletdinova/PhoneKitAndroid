@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat.getColor
 import androidx.dynamicanimation.animation.FloatPropertyCompat
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
-import ru.kamal.phone_kit.R
+import ru.kamal.country_phone_kit.R
 
 /**
  * Компонент с анимированным появлением хинта за счет физики анимаций, основанной на [SpringAnimation]
