@@ -23,7 +23,7 @@ import ru.kamal.phone_kit.api.model.Country
 import ru.kamal.phone_kit.util.*
 import ru.kamal.phone_kit.util.data.CountriesRepository
 import ru.kamal.phone_kit.util.formater.PhoneFormatterImpl
-import ru.kamal.phone_kit.util.ui.country_alert.CountryAlert
+import ru.kamal.phone_kit.util.ui.country_alert.CountryBottomSheet
 import ru.kamal.phone_kit.util.ui.phone_view.formater.DigitsOnlyTextInputFilter
 import ru.kamal.phone_kit.util.ui.phone_view.formater.PhoneNumberCodeFormatter
 import ru.kamal.phone_kit.util.ui.phone_view.model.InputResult
@@ -93,7 +93,7 @@ class PhoneView @JvmOverloads constructor(
         )
     }
 
-    private val countryAlert by lazyUnsafe { CountryAlert(context, ::updateSelectedCountry) }
+    private val countryBottomSheet by lazyUnsafe { CountryBottomSheet(context, ::updateSelectedCountry) }
 
     private val codeTextWatcher: CodeTextWatcher by lazyUnsafe {
         CodeTextWatcher(
@@ -210,7 +210,7 @@ class PhoneView @JvmOverloads constructor(
 
             val anim = AnimationUtils.loadAnimation(context, R.anim.text_in)
             inAnimation = anim
-            setOnClickListener { countryAlert.showPickDialog() }
+            setOnClickListener { countryBottomSheet.showDialog() }
             setFlag()
         }
     }

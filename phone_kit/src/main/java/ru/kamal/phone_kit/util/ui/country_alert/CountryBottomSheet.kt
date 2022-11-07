@@ -1,11 +1,15 @@
 package ru.kamal.phone_kit.util.ui.country_alert
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Resources
 import android.view.LayoutInflater
-import androidx.appcompat.app.AlertDialog
+import android.widget.FrameLayout
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import ru.kamal.phone_kit.api.model.Country
 import ru.kamal.phone_kit.util.data.CountriesRepository
 import ru.kamal.phone_kit.util.launchSafeIgnoreError
@@ -16,7 +20,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 import ru.kamal.country_phone_kit.R
 
-internal class CountryAlert(
+internal class CountryBottomSheet(
     private val context: Context,
     private val updateSelectedCountry: (Country) -> Unit
 ) {
@@ -25,10 +29,19 @@ internal class CountryAlert(
     private var jobCountrySearch: Job? = null
     private val countriesList: List<Country> = CountriesRepository.getCountries(context.resources)
 
-    fun showPickDialog() {
-        val dialog = AlertDialog.Builder(context).create()
-        val dialogView =
-            LayoutInflater.from(context).inflate(R.layout.alert_country, null)
+
+    fun showDialog() {
+        val dialog = BottomSheetDialog(context)
+        dialog.setOnShowListener {
+            val bottomSheet: FrameLayout = dialog.findViewById(com.google.android.material.R.id.design_bottom_sheet) ?: return@setOnShowListener
+            val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+            showFullScreenBottomSheet(bottomSheet)
+
+            bottomSheet.setBackgroundResource(android.R.color.transparent)
+            expandBottomSheet(bottomSheetBehavior)
+        }
+        @SuppressLint("InflateParams")
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.alert_country, null)
         val countries = dialogView.findViewById<RecyclerView>(R.id.countryList)
         val searchView = dialogView.findViewById<SearchView>(R.id.searchView)
 
@@ -61,8 +74,20 @@ internal class CountryAlert(
             setHasFixedSize(true)
             countryAdapter.submitList(countriesList)
         }
-        dialog.setView(dialogView)
+
+        dialog.setContentView(dialogView)
         dialog.show()
+    }
+
+    private fun showFullScreenBottomSheet(bottomSheet: FrameLayout) {
+        val layoutParams = bottomSheet.layoutParams
+        layoutParams.height = Resources.getSystem().displayMetrics.heightPixels
+        bottomSheet.layoutParams = layoutParams
+    }
+
+    private fun expandBottomSheet(bottomSheetBehavior: BottomSheetBehavior<FrameLayout>) {
+        bottomSheetBehavior.skipCollapsed = true
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
     private suspend fun findCountry(query: String?): List<Country> =
