@@ -1,13 +1,15 @@
 package ru.kamal.phone_kit.api
 
+import android.content.res.Resources
 import androidx.annotation.Keep
 import ru.kamal.phone_kit.api.model.Country
+import ru.kamal.phone_kit.util.data.CountriesRepository
 import ru.kamal.phone_kit.util.formater.PhoneFormatterImpl
 
 
 @Keep
-fun getPhoneFormatter(countryMap:  Map<String, Country>): PhoneFormatter {
-    return PhoneFormatterImpl(countryMap)
+fun getPhoneFormatter(resources: Resources): PhoneFormatter {
+    return PhoneFormatterImpl(CountriesRepository.getCodeCountiesMap(resources))
 }
 /** Форматер номера телефона с поддержкой кодов всех стран мира **/
 interface PhoneFormatter {
@@ -24,6 +26,8 @@ interface PhoneFormatter {
      */
     fun getCountryByNumber(countyCodeWithNumber: String): Country?
 
-    /** Возвращает телефон как цифры, без суффикса "+" и кода страны **/
+    /** Возвращает телефон как цифры, без суффикса "+" и кода страны
+     *  @param input строка с кодом и номером телефона
+     * **/
     fun getClearText(input: String): String
 }

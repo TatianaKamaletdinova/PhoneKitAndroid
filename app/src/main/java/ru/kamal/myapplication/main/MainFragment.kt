@@ -23,8 +23,6 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-
-    private var codeAndNumberFilled: PhoneResult.CodeAndNumberFilled? = null
     private val viewState = MutableStateFlow(MainViewState.init())
 
     override fun onCreateView(
@@ -38,14 +36,10 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupPhoneFragment()
-        setupPhoneFragment2()
+        binding.phoneNumberView2.setupPhone("375777")
+        setupPhone()
         setupCheckRecreatePhoneView()
         renderState()
-    }
-
-    private fun setupPhoneFragment2() {
-      //  binding.phoneNumberView2.isFocusAndShowKeyboard = true
     }
 
     override fun onDestroyView() {
@@ -64,7 +58,7 @@ class MainFragment : Fragment() {
     }
 
 
-    private fun setupPhoneFragment() {
+    private fun setupPhone() {
         withUnit(binding.phoneNumberView) {
             phoneFlow
                 .onEach { validatePhone(it) }
@@ -92,11 +86,10 @@ class MainFragment : Fragment() {
     private fun validatePhone(phoneResult: PhoneResult) {
         when (phoneResult) {
             is PhoneResult.CodeAndNumberFilled -> {
-                codeAndNumberFilled = phoneResult
-                viewState.update(MainViewState::phoneValid)
+                viewState.update { state -> MainViewState.phoneValid(state, phoneResult) }
             }
+
             is PhoneResult.Invalid -> {
-                codeAndNumberFilled = null
                 viewState.update { state ->
                     MainViewState.phoneInValid(
                         previous = state,
@@ -107,7 +100,6 @@ class MainFragment : Fragment() {
             }
 
             is PhoneResult.ErrorCountryCode -> {
-                codeAndNumberFilled = null
                 viewState.update { state ->
                     MainViewState.phoneInValid(
                         state,
@@ -118,7 +110,6 @@ class MainFragment : Fragment() {
             }
 
             is PhoneResult.EmptyCode -> {
-                codeAndNumberFilled = null
                 viewState.update { state ->
                     MainViewState.phoneInValid(
                         state,
@@ -129,7 +120,6 @@ class MainFragment : Fragment() {
             }
 
             is PhoneResult.NotSet -> {
-                codeAndNumberFilled = null
                 viewState.update { state ->
                     MainViewState.notSetPhone(
                         state

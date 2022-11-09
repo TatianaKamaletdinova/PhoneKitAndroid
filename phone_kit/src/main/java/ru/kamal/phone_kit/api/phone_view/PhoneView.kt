@@ -19,6 +19,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.parcelize.Parcelize
 import ru.kamal.country_phone_kit.R
 import ru.kamal.country_phone_kit.databinding.ViewPhoneBinding
+import ru.kamal.phone_kit.api.getPhoneFormatter
 import ru.kamal.phone_kit.api.model.Country
 import ru.kamal.phone_kit.util.*
 import ru.kamal.phone_kit.util.data.CountriesRepository
@@ -42,6 +43,7 @@ class PhoneView @JvmOverloads constructor(
     defStyleAttr: Int = 0,
 ) : BaseLinearLayout(context, attrs, defStyleAttr) {
 
+    private val phoneFormatter by lazyUnsafe { getPhoneFormatter(context.resources) }
     private var phoneResultFlow = MutableStateFlow<PhoneResult>(PhoneResult.NotSet)
 
     /** Флоу для получения результата корректного ввода телефона */
@@ -50,16 +52,9 @@ class PhoneView @JvmOverloads constructor(
     /** Устанавливает дефолтную страну - Россию **/
     var setupRussiaCountry = true
         set(value) {
-            if (value) {
-                binding.codeField.setText("7")
-            } else {
-                binding.codeField.setText("")
-                binding.codeField.requestFocus()
-                binding.codeField.setSelection(0)
-            }
+           setupInitDefaultCountry()
             field = value
         }
-
 
     var isError: Boolean = false
         set(value) {
@@ -161,6 +156,27 @@ class PhoneView @JvmOverloads constructor(
     private fun setupInitDefaultCountry() {
         if (setupRussiaCountry) binding.codeField.setText("7")
     }
+
+    /** Устанавливает номер в поле **/
+    fun setupPhone(value: String?) {
+        try {
+            if (value.isNullOrBlank()) return
+
+            codeTextWatcher.ignoreOnCodeChange = true
+
+            val country = phoneFormatter.getCountryByNumber(value)
+            binding.codeField.setText(country?.code)
+
+            val clearText = phoneFormatter.getClearText(value)
+            setInputCode(country, clearText)
+
+            codeTextWatcher.ignoreOnCodeChange = false
+
+        } catch (_: Throwable) {
+            //если код страны не найден, то в поле ничего не вставится
+        }
+    }
+
 
     private fun getAttributes(attrs: AttributeSet?) {
         readAttrs(attrs, R.styleable.PhoneView) {
@@ -300,8 +316,6 @@ class PhoneView @JvmOverloads constructor(
     private fun setEmptyCode() {
         updatePhoneResult(newCountryState = InputResult.Empty, newPhoneState = phoneState)
         currentCountry = null
-        errorText = ""
-        isError = false
         setPhoneHint("")
         setFlag()
     }

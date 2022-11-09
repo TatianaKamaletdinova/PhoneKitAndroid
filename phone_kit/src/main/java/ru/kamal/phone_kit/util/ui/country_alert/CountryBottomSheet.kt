@@ -41,7 +41,7 @@ internal class CountryBottomSheet(
             expandBottomSheet(bottomSheetBehavior)
         }
         @SuppressLint("InflateParams")
-        val dialogView = LayoutInflater.from(context).inflate(R.layout.alert_country, null)
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_country, null)
         val countries = dialogView.findViewById<RecyclerView>(R.id.countryList)
         val searchView = dialogView.findViewById<SearchView>(R.id.searchView)
 
