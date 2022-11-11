@@ -2,8 +2,8 @@ package ru.kamal.phone_kit.util.ui.country_alert
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.Resources
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -81,7 +81,7 @@ internal class CountryBottomSheet(
 
     private fun showFullScreenBottomSheet(bottomSheet: FrameLayout) {
         val layoutParams = bottomSheet.layoutParams
-        layoutParams.height = Resources.getSystem().displayMetrics.heightPixels
+        layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
         bottomSheet.layoutParams = layoutParams
     }
 

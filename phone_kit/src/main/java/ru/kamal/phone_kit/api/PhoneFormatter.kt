@@ -30,4 +30,9 @@ interface PhoneFormatter {
      *  @param input строка с кодом и номером телефона
      * **/
     fun getClearText(input: String): String
+
+    /** Форматирует номер и подставляет звездочки после кода оператора телефона или
+     * если нет кода оператора подставляет звездочки на первые 1 или 2 цифры номера
+     * @param phone строка с кодом и номером телефона **/
+    fun formatWithSecretMask(phone: String): String
 }

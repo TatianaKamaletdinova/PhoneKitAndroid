@@ -32,7 +32,6 @@ import ru.kamal.phone_kit.util.ui.phone_view.view.layout.BaseLinearLayout
 import ru.kamal.phone_kit.util.ui.phone_view.watcher.CodeTextWatcher
 import ru.kamal.phone_kit.util.ui.phone_view.watcher.PhoneTextWatcher
 
-
 /**
  * Компонент для ввода телефона.
  * Поддерживает коды всех стран мира на основе [PhoneFormatterImpl].
@@ -52,7 +51,7 @@ class PhoneView @JvmOverloads constructor(
     /** Устанавливает дефолтную страну - Россию **/
     var setupRussiaCountry = true
         set(value) {
-           setupInitDefaultCountry()
+            setupDefaultCountry()
             field = value
         }
 
@@ -113,7 +112,7 @@ class PhoneView @JvmOverloads constructor(
         setupCodeField()
         setupPhoneField()
         setupVies()
-        setupInitDefaultCountry()
+        setupDefaultCountry()
     }
 
     /** Устанавливает фокус и открывает клавиатуру **/
@@ -153,7 +152,7 @@ class PhoneView @JvmOverloads constructor(
         super.onRestoreInstanceState(savedPhoneNumberState?.superState)
     }
 
-    private fun setupInitDefaultCountry() {
+    private fun setupDefaultCountry() {
         if (setupRussiaCountry) binding.codeField.setText("7")
     }
 

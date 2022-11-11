@@ -1,19 +1,19 @@
-package ru.example.country_phone_kit
+package ru.example.country_phone_kit.phone_formatter
 
 import org.junit.Assert
 import org.junit.Test
+import ru.kamal.phone_kit.api.PhoneFormatter
 import ru.kamal.phone_kit.api.model.Country
 import ru.kamal.phone_kit.util.formater.PhoneFormatterImpl
 
-
 @Suppress("NonAsciiCharacters")
-class PhoneCountryTextFormatterTest {
+class FormatTest {
 
     private val countryMap = mapOf(
         "7" to Country(name = "Russian Federation",
             shortname = "RU",
             maxPhoneLength = 10,
-            phoneFormat = "XXX XXX XX XX",
+            phoneFormat = "XXX XXX XX-XX",
             code = "7",
             isoCode = "643"),
         "1" to Country(name = "US",
@@ -33,14 +33,24 @@ class PhoneCountryTextFormatterTest {
             phoneFormat = "",
             code = "84",
             isoCode = "84"),
-        "1268" to Country(name = "Antigua & Barbuda",
+        "1268" to Country(
+            name = "Antigua & Barbuda",
             shortname = "AG",
             phoneFormat = "XXXX XXXXXX",
             code = "1268",
-            isoCode = "1268"),
+            isoCode = "1268",
+        ),
+        "375" to Country(
+            name = "Bela",
+            shortname = "BE",
+            phoneFormat = "XX XXX-XX-XX",
+            code = "375",
+            isoCode = "375",
+        ),
     )
 
-    private val phoneCountryTextFormatter: PhoneFormatterImpl = PhoneFormatterImpl(countryMap)
+    private
+    val phoneCountryTextFormatter: PhoneFormatter = PhoneFormatterImpl(countryMap)
 
     @Test(expected = NullPointerException::class)
     fun `номер телефона не может быть пустым - NullPointerException`() {
@@ -63,6 +73,11 @@ class PhoneCountryTextFormatterTest {
     }
 
     @Test
+    fun `номер очищается от лишних цифр`() {
+        Assert.assertEquals(phoneCountryTextFormatter.getClearText("+44 934 345-43-43"), "9343454343")
+    }
+
+    @Test
     fun `у номера нет маски - после кода числа без форматирования`() {
         Assert.assertEquals("+84 9343454343", phoneCountryTextFormatter.format("849343454343"))
     }
@@ -80,10 +95,5 @@ class PhoneCountryTextFormatterTest {
     @Test
     fun `код из 1 символа`() {
         Assert.assertEquals("+1 3682 934345", phoneCountryTextFormatter.format("136829343454343"))
-    }
-
-    @Test
-    fun `номер очищается от лишних символов и кода страны`() {
-        Assert.assertEquals("9343454343", phoneCountryTextFormatter.getClearText("+44 934 345-43-43"))
     }
 }
