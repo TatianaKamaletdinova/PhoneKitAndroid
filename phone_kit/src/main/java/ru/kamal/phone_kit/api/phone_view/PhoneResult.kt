@@ -3,6 +3,7 @@ package ru.kamal.phone_kit.api.phone_view
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import ru.kamal.phone_kit.api.model.Country
+import ru.kamal.phone_kit.util.onlyDigits
 
 /** Модель результата ввода телефона */
 sealed interface PhoneResult : Parcelable {
@@ -27,4 +28,8 @@ sealed interface PhoneResult : Parcelable {
         val number: String,
         val country: Country,
     ) : PhoneResult
+}
+
+fun PhoneResult.CodeAndNumberFilled.getFullPhone(): String {
+    return "${country.code.onlyDigits()}${number.onlyDigits()}"
 }

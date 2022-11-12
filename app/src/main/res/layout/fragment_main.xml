@@ -16,6 +16,7 @@
 
         <Button
             android:id="@+id/button2"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="проверить пересоздание компонента"
@@ -26,24 +27,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:initDefaultCountry="true"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/mask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-black"
+            android:text="С маской:"
+            android:textColor="@color/purple_500" />
 
         <ru.kamal.phone_kit.api.phone_view.PhoneView
             android:id="@+id/phoneNumberView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:initDefaultCountry="true"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <EditText
             android:id="@+id/editTextTextPersonName3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
             android:ems="10"
             android:hint="Поле для теста фокуса"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            tools:ignore="HardcodedText"
-            android:importantForAutofill="no" />
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button"

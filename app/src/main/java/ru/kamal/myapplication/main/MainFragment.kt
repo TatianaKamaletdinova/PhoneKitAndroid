@@ -18,12 +18,16 @@ import ru.kamal.myapplication.R
 import ru.kamal.myapplication.databinding.FragmentMainBinding
 import ru.kamal.myapplication.second.SecondFragment
 import ru.kamal.myapplication.util.toStringOrEmpty
+import ru.kamal.phone_kit.api.PhoneFormatter
+import ru.kamal.phone_kit.api.getPhoneFormatter
+import ru.kamal.phone_kit.api.phone_view.getFullPhone
 
 class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private val viewState = MutableStateFlow(MainViewState.init())
+    private val phoneFormatter: PhoneFormatter by lazy { getPhoneFormatter(this.resources) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,6 +64,7 @@ class MainFragment : Fragment() {
 
     private fun setupPhone() {
         withUnit(binding.phoneNumberView) {
+            setupFocusAndShowKeyboard(true)
             phoneFlow
                 .onEach { validatePhone(it) }
                 .launchIn(CoroutineScope(Dispatchers.Main))
@@ -74,6 +79,18 @@ class MainFragment : Fragment() {
                     state.errorText.toStringOrEmpty()
                 )
                 binding.button.isEnabled = state.isEnableButton
+
+                binding.mask.text = if (state.isEnableButton) {
+                    "С маской: ${
+                        phoneFormatter.formatWithSecretMask(
+                            state.codeAndNumberFilled?.getFullPhone().orEmpty()
+                        )
+                    } ${
+                        phoneFormatter.getCountryByNumber(
+                            state.codeAndNumberFilled?.getFullPhone().orEmpty()
+                        )
+                    }"
+                } else "С маской: телефон не введен"
             }
             .launchIn(CoroutineScope(Dispatchers.Main))
     }
