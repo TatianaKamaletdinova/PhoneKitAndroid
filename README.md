@@ -25,8 +25,7 @@ phone_kit - это форматер и ui-компонент для формат
             //Флоу для получения результата корректного ввода телефона
             phoneFlow
                 .onEach { validatePhone(it) }
-                .launchIn(scope)
-            
+                .launchIn(scope)          
             //Устанавливает номер в поле
             setupPhone("375777")
         }
@@ -52,7 +51,6 @@ val digitNumber = phoneFormatter.getClearText("+7 965 234-61-79")
 //9652346179
 digitNumber
 
-
 //Форматирует номер и подставляет звездочки после кода оператора телефона 
 //или если нет кода оператора подставляет звездочки на первые 1 или 2 цифры номера
 val maskedNumber = phoneFormatter.formatWithSecretMask("79652346179")
@@ -60,4 +58,3 @@ val maskedNumber = phoneFormatter.formatWithSecretMask("79652346179")
 maskedNumber
 
 ```
-
