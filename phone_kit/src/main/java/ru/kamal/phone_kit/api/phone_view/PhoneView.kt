@@ -164,10 +164,10 @@ class PhoneView @JvmOverloads constructor(
             codeTextWatcher.ignoreOnCodeChange = true
 
             val country = phoneFormatter.getCountryByNumber(value)
-            binding.codeField.setText(country?.code)
+            if (binding.codeField.text.toStringOrEmpty().onlyDigits() != country?.code) binding.codeField.setText(country?.code)
 
             val clearText = phoneFormatter.getClearText(value)
-            setInputCode(country, clearText)
+            if (binding.phoneField.text.toStringOrEmpty().onlyDigits() != clearText)  setInputCode(country, clearText)
 
             codeTextWatcher.ignoreOnCodeChange = false
 
