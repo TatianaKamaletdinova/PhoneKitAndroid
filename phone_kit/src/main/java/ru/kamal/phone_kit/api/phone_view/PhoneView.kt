@@ -141,6 +141,8 @@ class PhoneView @JvmOverloads constructor(
         return SavedPhoneNumberState(
             superState = superState,
             setupFocusAndShowKeyboard = isFocus,
+            code = binding.codeField.text.toStringOrEmpty(),
+            number = binding.phoneField.text.toStringOrEmpty(),
         )
     }
 
@@ -148,6 +150,16 @@ class PhoneView @JvmOverloads constructor(
         val savedPhoneNumberState = state as? SavedPhoneNumberState
         savedPhoneNumberState?.let {
             setupFocusAndShowKeyboard(savedPhoneNumberState.setupFocusAndShowKeyboard)
+            withUnit(binding) {
+                codeTextWatcher.ignoreOnCodeChange = true
+
+                codeField.setText(it.code)
+                val country = phoneFormatter.getCountryByNumber(it.code)
+                checkCounty(country)
+                phoneField.setText(it.number)
+
+                codeTextWatcher.ignoreOnCodeChange = false
+            }
         }
         super.onRestoreInstanceState(savedPhoneNumberState?.superState)
     }
@@ -167,7 +179,10 @@ class PhoneView @JvmOverloads constructor(
             if (binding.codeField.text.toStringOrEmpty().onlyDigits() != country?.code) binding.codeField.setText(country?.code)
 
             val clearText = phoneFormatter.getClearText(value)
-            if (binding.phoneField.text.toStringOrEmpty().onlyDigits() != clearText)  setInputCode(country, clearText)
+            if (binding.phoneField.text.toStringOrEmpty().onlyDigits() != clearText) {
+                checkCounty(country)
+                if (clearText.isNotBlank()) binding.phoneField.setText(clearText)
+            }
 
             codeTextWatcher.ignoreOnCodeChange = false
 
@@ -319,9 +334,9 @@ class PhoneView @JvmOverloads constructor(
 
     private fun setInputCode(country: Country?, numberToMoveToPhone: String?) {
         checkCounty(country)
-        if (numberToMoveToPhone != null && numberToMoveToPhone.isNotBlank()) moveCursorOnPhoneIfValidCodeOrLengthMoreFour(
-            numberToMoveToPhone
-        )
+        if (numberToMoveToPhone != null && numberToMoveToPhone.isNotBlank()) {
+            moveCursorOnPhoneIfValidCodeOrLengthMoreFour(numberToMoveToPhone)
+        }
     }
 
     private fun checkCounty(country: Country?) {
@@ -405,5 +420,7 @@ class PhoneView @JvmOverloads constructor(
     private data class SavedPhoneNumberState(
         val superState: Parcelable?,
         val setupFocusAndShowKeyboard: Boolean = false,
+        val code: String,
+        val number: String,
     ) : Parcelable
 }

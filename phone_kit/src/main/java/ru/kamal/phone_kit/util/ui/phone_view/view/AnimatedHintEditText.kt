@@ -51,6 +51,7 @@ internal class AnimatedHintEditText @JvmOverloads constructor(
         }
 
     init {
+        isSaveEnabled = false
         setup()
     }
 

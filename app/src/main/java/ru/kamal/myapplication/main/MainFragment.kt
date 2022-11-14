@@ -40,7 +40,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.phoneNumberView2.setupPhone("375777")
+      //  binding.phoneNumberView2.setupPhone("375777")
         setupPhone()
         setupCheckRecreatePhoneView()
         renderState()
@@ -64,7 +64,7 @@ class MainFragment : Fragment() {
 
     private fun setupPhone() {
         withUnit(binding.phoneNumberView) {
-            setupFocusAndShowKeyboard(true)
+            setupPhone("375777")
             phoneFlow
                 .onEach { validatePhone(it) }
                 .launchIn(CoroutineScope(Dispatchers.Main))
