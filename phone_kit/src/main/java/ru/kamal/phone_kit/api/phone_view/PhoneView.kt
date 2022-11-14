@@ -138,7 +138,7 @@ class PhoneView @JvmOverloads constructor(
     override fun onSaveInstanceState(): Parcelable {
         val isFocus = binding.codeField.isFocused || binding.phoneField.isFocused
         val superState = super.onSaveInstanceState()
-        return SavedPhoneNumberState(
+        return SavedPhoneState(
             superState = superState,
             setupFocusAndShowKeyboard = isFocus,
             code = binding.codeField.text.toStringOrEmpty(),
@@ -147,21 +147,25 @@ class PhoneView @JvmOverloads constructor(
     }
 
     override fun onRestoreInstanceState(state: Parcelable?) {
-        val savedPhoneNumberState = state as? SavedPhoneNumberState
-        savedPhoneNumberState?.let {
-            setupFocusAndShowKeyboard(savedPhoneNumberState.setupFocusAndShowKeyboard)
-            withUnit(binding) {
-                codeTextWatcher.ignoreOnCodeChange = true
-
-                codeField.setText(it.code)
-                val country = phoneFormatter.getCountryByNumber(it.code)
-                checkCounty(country)
-                phoneField.setText(it.number)
-
-                codeTextWatcher.ignoreOnCodeChange = false
-            }
+        val savedPhoneState = state as? SavedPhoneState
+        savedPhoneState?.let {
+            setupFocusAndShowKeyboard(savedPhoneState.setupFocusAndShowKeyboard)
+            restoreInput(it)
         }
-        super.onRestoreInstanceState(savedPhoneNumberState?.superState)
+        super.onRestoreInstanceState(savedPhoneState?.superState)
+    }
+
+    private fun restoreInput(savedPhoneState: SavedPhoneState) {
+        withUnit(binding) {
+            codeTextWatcher.ignoreOnCodeChange = true
+
+            codeField.setText(savedPhoneState.code)
+            val country = phoneFormatter.getCountryByNumber(savedPhoneState.code)
+            checkCounty(country)
+            phoneField.setText(savedPhoneState.number)
+
+            codeTextWatcher.ignoreOnCodeChange = false
+        }
     }
 
     private fun setupDefaultCountry() {
@@ -417,7 +421,7 @@ class PhoneView @JvmOverloads constructor(
     }
 
     @Parcelize
-    private data class SavedPhoneNumberState(
+    private data class SavedPhoneState(
         val superState: Parcelable?,
         val setupFocusAndShowKeyboard: Boolean = false,
         val code: String,
