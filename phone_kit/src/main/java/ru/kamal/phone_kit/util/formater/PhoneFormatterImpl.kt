@@ -88,9 +88,9 @@ internal class PhoneFormatterImpl constructor(private val countryMap:  Map<Strin
 
     private fun hideFirstChars(phone: String): String {
         return if (phone.length > 2) {
-            phone.replaceRange(0, 2, "**")
+            phone.replaceRange(phone.length-2, phone.length, "**")
         } else {
-            phone.replaceRange(0, 1, "*")
+            phone.replaceRange(phone.length-1, phone.length, "*")
         }
     }
 }

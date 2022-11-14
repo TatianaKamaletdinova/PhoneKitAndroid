@@ -88,22 +88,22 @@ class FormatWithMaskTest {
 
     @Test
     fun `маска5`() {
-        Assert.assertEquals("+84 **77", phoneCountryTextFormatter.formatWithSecretMask("847777"))
+        Assert.assertEquals("+84 77**", phoneCountryTextFormatter.formatWithSecretMask("847777"))
     }
 
     @Test
     fun `маска6`() {
-        Assert.assertEquals("+1268 **5-7777", phoneCountryTextFormatter.formatWithSecretMask("12687757777"))
+        Assert.assertEquals("+1268 775-77**", phoneCountryTextFormatter.formatWithSecretMask("12687757777"))
     }
 
     @Test
     fun `маска7`() {
-        Assert.assertEquals("+690 **34", phoneCountryTextFormatter.formatWithSecretMask("6901234"))
+        Assert.assertEquals("+690 12**", phoneCountryTextFormatter.formatWithSecretMask("6901234"))
     }
 
     @Test
     fun `маска8`() {
-        Assert.assertEquals("+690 **44", phoneCountryTextFormatter.formatWithSecretMask("6904444"))
+        Assert.assertEquals("+690 44**", phoneCountryTextFormatter.formatWithSecretMask("6904444"))
     }
 
     @Test
@@ -133,7 +133,7 @@ class FormatWithMaskTest {
 
     @Test
     fun `маска13`() {
-        Assert.assertEquals("+7 **5", phoneCountryTextFormatter.formatWithSecretMask("7965"))
+        Assert.assertEquals("+7 9**", phoneCountryTextFormatter.formatWithSecretMask("7965"))
     }
 
     @Test
@@ -143,21 +143,21 @@ class FormatWithMaskTest {
 
     @Test
     fun `маска15`() {
-        Assert.assertEquals("+263 2 **6666", phoneCountryTextFormatter.formatWithSecretMask("2632666666"))
+        Assert.assertEquals("+263 2 6666**", phoneCountryTextFormatter.formatWithSecretMask("2632666666"))
     }
 
     @Test
     fun `маска16`() {
-        Assert.assertEquals("+263 6 **6666", phoneCountryTextFormatter.formatWithSecretMask("2636666666"))
+        Assert.assertEquals("+263 6 6666**", phoneCountryTextFormatter.formatWithSecretMask("2636666666"))
     }
 
     @Test
     fun `маска17`() {
-        Assert.assertEquals("+263 0 **3456", phoneCountryTextFormatter.formatWithSecretMask("2630123456"))
+        Assert.assertEquals("+263 0 1234**", phoneCountryTextFormatter.formatWithSecretMask("2630123456"))
     }
 
     @Test
     fun `маска18`() {
-        Assert.assertEquals("+263 0 **3456", phoneCountryTextFormatter.formatWithSecretMask("2630123456"))
+        Assert.assertEquals("+263 0 1234**", phoneCountryTextFormatter.formatWithSecretMask("2630123456"))
     }
 }
