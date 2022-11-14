@@ -236,9 +236,7 @@ class PhoneView @JvmOverloads constructor(
         codeTextWatcher.ignoreOnCodeChange = true
         binding.codeField.setText(selectCountry.code)
         binding.codeField.setSelection(binding.codeField.length())
-        checkCounty(selectCountry)
-        binding.phoneField.requestFocus()
-        binding.phoneField.setSelection(binding.phoneField.length())
+        setInputCode(selectCountry, binding.phoneField.text.toStringOrEmpty())
         codeTextWatcher.ignoreOnCodeChange = false
     }
 
