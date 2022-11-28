@@ -7,7 +7,7 @@ https://user-images.githubusercontent.com/23185210/204284062-23e8230a-d76f-4a00-
 ![image](https://user-images.githubusercontent.com/23185210/204283860-bbcbc9f8-6b46-4b07-99c3-de2862a44204.png)
 
 # Демонстрация
-[Sample] (https://github.com/TatyanaBazhanova/PhoneKitAndroid/tree/master/app) приложение демонстрирует, насколько просто на самом деле использовать библиотеку.
+[Sample](https://github.com/TatyanaBazhanova/PhoneKitAndroid/tree/master/ap) приложение демонстрирует, насколько просто на самом деле использовать библиотеку.
 
 # Использование
  
