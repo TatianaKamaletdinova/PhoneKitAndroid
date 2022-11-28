@@ -1,6 +1,17 @@
 # PhoneKitAndroid
 phone_kit - это форматер и ui-компонент для форматирования и ввода номера телефона всех стран мира
 
+https://user-images.githubusercontent.com/23185210/204284062-23e8230a-d76f-4a00-b619-1f49912f51fd.mp4
+
+![image](https://user-images.githubusercontent.com/23185210/204283813-94c2513f-ed87-484f-b103-e46998330866.png)
+![image](https://user-images.githubusercontent.com/23185210/204283860-bbcbc9f8-6b46-4b07-99c3-de2862a44204.png)
+
+# Демонстрация
+[Sample](https://github.com/TatyanaBazhanova/PhoneKitAndroid/tree/master/app) приложение демонстрирует, насколько просто на самом деле использовать библиотеку.
+
+[Unit-tests](https://github.com/TatyanaBazhanova/PhoneKitAndroid/tree/master/phone_kit/src/test/java/ru/example/country_phone_kit) unit-тесты на форматор 
+
+
 # Использование
  
 В xml:
