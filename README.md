@@ -9,7 +9,7 @@ https://user-images.githubusercontent.com/23185210/204284062-23e8230a-d76f-4a00-
 # Демонстрация
 [Sample](https://github.com/TatyanaBazhanova/PhoneKitAndroid/tree/master/app) приложение демонстрирует, насколько просто на самом деле использовать библиотеку.
 
-[Sample](https://github.com/TatyanaBazhanova/PhoneKitAndroid/tree/master/phone_kit/src/test/java/ru/example/country_phone_kit) unit-тесты на форматор 
+[Unit-tests](https://github.com/TatyanaBazhanova/PhoneKitAndroid/tree/master/phone_kit/src/test/java/ru/example/country_phone_kit) unit-тесты на форматор 
 
 
 # Использование
