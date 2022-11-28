@@ -40,7 +40,6 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      //  binding.phoneNumberView2.setupPhone("375777")
         setupPhone()
         setupCheckRecreatePhoneView()
         renderState()
